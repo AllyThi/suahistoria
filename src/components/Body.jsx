@@ -23,7 +23,8 @@ function Body() {
 const criarHist = () => {
   const params = {
     model: "gpt-3.5-turbo-instruct",
-    prompt: `Crie uma história completa infantil,  com seguintes caracteristicas, em português:  ${pergunta}`,
+    prompt: `Crie uma história completa infantil,  com seguintes caracteristicas, em português:Personagens principais${pergunta.principais},personagens secundários ${pergunta.secundarios}
+    , vilões ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos} `,
     max_tokens: 1500,
     temperature: 1,
     }
