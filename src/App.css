@@ -5,8 +5,9 @@
   font-family: cursive;
   background-image: url("./components/contabackground.jpg");
   background-size: contain;
-  width: 500px; ;
-}
+  max-width: 1080px;
+  min-width: 240px;
+} 
 
 button {
 font-family: cursive;
