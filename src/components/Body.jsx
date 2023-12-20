@@ -16,6 +16,17 @@ function Body() {
 
   console.log(pergunta)
 
+  const ler = (response) => {
+    const palavras = response.split('.');
+  
+    for (let i = 0; i < palavras.length; i++ ) {
+      let talk = new SpeechSynthesisUtterance(palavras[i]);
+      let voices = window.speechSynthesis.getVoices();
+      talk.voice = voices[1];
+      window.speechSynthesis.speak(talk);
+    }
+  };
+  
 
 
   const apiKey = process.env.REACT_APP_OPENAI_API_KEY
@@ -26,7 +37,7 @@ const criarHist = () => {
   const params = {
     model: "gpt-3.5-turbo-instruct",
     prompt: `Crie uma história completa infantil,  com seguintes caracteristicas, em português:Personagens principais${pergunta.principais},personagens secundários ${pergunta.secundarios}
-    , vilões ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos} `,
+    , vilões ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos}, divida as frases com um ponto simples como . `, 
     max_tokens: 1500,
     temperature: 1,
     }
@@ -36,6 +47,10 @@ const criarHist = () => {
     .catch((err)=> console.log(err))
   } 
   
+  
+    
+ 
+
 
 
   return (
@@ -53,10 +68,11 @@ const criarHist = () => {
       <input value={pergunta.elementos} type="text" placeholder=" Digite os elementos da História" onChange={(e) => setPergunta({...pergunta, elementos:e.target.value}) } ></input>
       <br />
       <button onClick={criarHist} >Gerar História</button>
+      <button onClick={ler(response)} >ler</button>
       <br />
       <textarea value={response} readOnly></textarea>
     </div>
   );
-}
+  }
 
 export default Body;
