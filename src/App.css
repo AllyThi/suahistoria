@@ -13,9 +13,9 @@ align-items: center;
     background-image: url("./components/contabackground.jpg");
     background-size:cover;
     max-width: 1080px;;
-    min-width: fit-content;
+    min-width: 320px;
     justify-content: center;
-    min-height: fit-content;
+    min-height: 240px;
     max-height: 960px;
   } 
   
