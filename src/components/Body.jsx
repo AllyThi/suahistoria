@@ -47,30 +47,23 @@ const criarHist = () => {
     .catch((err)=> console.log(err))
   } 
   
-  
-    
- 
-
-
-
   return (
     <div className="container">
-      <h1>Contador de Histórias</h1>
-      <p>Personagem principal</p>
-      <input type="text" value={pergunta.principais} placeholder="Digite todos os personagens principais" onChange={(e) => setPergunta({ ...pergunta, principais: e.target.value })}></input>
-      <p>Personagens secundários</p>
-      <input type="text" value={pergunta.secundarios} placeholder="Digite os personnagens secundários" onChange={(e) => setPergunta({...pergunta, secundarios:e.target.value})}></input>
-      <p>Vilões</p>
-      <input value={pergunta.viloes}  type="text" placeholder="Digite os Vilões da História" onChange={(e) => setPergunta({...pergunta, viloes:e.target.value}) }></input>
-      <p>Gênero</p>
-      <input  value={pergunta.generos} type="text" placeholder="Digite os Gêneros" onChange={(e) => setPergunta({...pergunta, generos:e.target.value}) }></input>
-      <p>Elementos</p>
-      <input value={pergunta.elementos} type="text" placeholder=" Digite os elementos da História" onChange={(e) => setPergunta({...pergunta, elementos:e.target.value}) } ></input>
-      <br />
-      <button onClick={criarHist} >Gerar História</button>
-      <button onClick={ler(response)} >ler</button>
-      <br />
-      <textarea value={response} readOnly></textarea>
+      <div  className="secundario"> <h1>Contador de Histórias</h1></div>
+      <div className="secundario"><p>Personagem principal</p></div>
+      <div className="secundario"><input type="text" value={pergunta.principais} placeholder="Digite todos os personagens principais" onChange={(e) => setPergunta({ ...pergunta, principais: e.target.value })}></input></div>
+      <div className="secundario"><p>Personagens secundários</p></div>
+      <div className="secundario"><input type="text" value={pergunta.secundarios} placeholder="Digite os personnagens secundários" onChange={(e) => setPergunta({...pergunta, secundarios:e.target.value})}></input></div>
+      <div className="secundario"><p>Vilões</p></div>
+      <div className="secundario"><input value={pergunta.viloes}  type="text" placeholder="Digite os Vilões da História" onChange={(e) => setPergunta({...pergunta, viloes:e.target.value}) }></input></div>
+      <div className="secundario"><p>Gênero</p></div>
+      <div className="secundario"><input  value={pergunta.generos} type="text" placeholder="Digite os Gêneros" onChange={(e) => setPergunta({...pergunta, generos:e.target.value}) }></input></div>
+      <div className="secundario"><p>Elementos</p></div>
+      <div className="secundario"><input value={pergunta.elementos} type="text" placeholder=" Digite os elementos da História" onChange={(e) => setPergunta({...pergunta, elementos:e.target.value}) } ></input></div>
+      <div className="secundario"><button onClick={criarHist} >Gerar História</button></div>
+      <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
+      <div className="secundario"><textarea value={response} readOnly></textarea></div>
+      
     </div>
   );
   }
