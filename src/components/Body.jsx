@@ -48,7 +48,7 @@ function Body() {
     client.post("https://api.openai.com/v1/images/generations", imagemParams)
       .then((result) => {
         setImagem(result.data[0]); // Armazenar a imagem na variável de estado
-      })
+       console.log(imagem)})
       .catch((err) => console.log(err));
   };
 
