@@ -6,6 +6,7 @@ import axios from "axios";
 
 function Body() {
   const [response, setResponse] = useState("");
+  const [imagem, setImagem] = useState(null);
   const [pergunta, setPergunta] =useState({
     principais: "",
     secundarios: "",
@@ -33,11 +34,27 @@ function Body() {
  
   const client =axios.create({headers: {Authorization: `Bearer ${apiKey}` }})
 
+
+  const gerarImagem = (texto) => {
+    const imagemParams = {
+      model: "dall-e-3",
+      prompt: texto,
+      n: 1,
+      size: "1024x1024",
+    };
+
+    client.post("https://api.openai.com/v1/images/generations", imagemParams)
+      .then((result) => {
+        setImagem(result.data[0]); // Armazenar a imagem na variável de estado
+      })
+      .catch((err) => console.log(err));
+  };
+
 const criarHist = () => {
   const params = {
     model: "gpt-3.5-turbo-instruct",
-    prompt: `Crie uma história completa infantil,  com seguintes caracteristicas, em português:Personagens principais${pergunta.principais},personagens secundários ${pergunta.secundarios}
-    , vilões ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos}, divida as frases com um ponto simples como . `, 
+    prompt: `Crie uma história completa infantil,  com seguintes caracteristicas, em português:Personagens principais: ${pergunta.principais},personagens secundários:  ${pergunta.secundarios}
+    , vilões:  ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos}, divida as frases com um ponto simples como . `, 
     max_tokens: 1500,
     temperature: 1,
     }
@@ -46,6 +63,7 @@ const criarHist = () => {
     .then((result)=> setResponse(result.data.choices[0].text))
     .catch((err)=> console.log(err))
   } 
+  
   
   return (
     <div className="container">
@@ -62,7 +80,9 @@ const criarHist = () => {
       <div className="secundario"><input value={pergunta.elementos} type="text" placeholder=" Digite os elementos da História" onChange={(e) => setPergunta({...pergunta, elementos:e.target.value}) } ></input></div>
       <div className="secundario"><button onClick={criarHist} >Gerar História</button></div>
       <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
+      <div className="secundario"><button onClick={() => gerarImagem()} >Gerar imagem da história</button></div>
       <div className="secundario"><textarea value={response} readOnly></textarea></div>
+      <div className="secundario"><img value={imagem}></img></div>
       
     </div>
   );
