@@ -46,11 +46,16 @@ function Body() {
     };
 
     client.post("https://api.openai.com/v1/images/generations", imagemParams)
-      .then((result) => {
-        setImagem(result.data[0]); // Armazenar a imagem na variável de estado
-       console.log(imagem)})
-      .catch((err) => console.log(err));
-  };
+    .then((result) => {
+      const imagemGerada = result.data[0];
+      if (imagemGerada && imagemGerada.url) {
+        setImagem(imagemGerada);
+      } else {
+        console.error("A resposta da API não contém a propriedade 'url'.", result.data);
+      }
+    })
+    .catch((err) => console.error(err));
+};
 
 const criarHist = () => {
   const params = {
