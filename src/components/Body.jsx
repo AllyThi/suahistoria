@@ -82,7 +82,7 @@ const criarHist = () => {
       <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
       <div className="secundario"><button onClick={() => gerarImagem()} >Gerar imagem da história</button></div>
       <div className="secundario"><textarea value={response} readOnly></textarea></div>
-      <div className="secundario"><img src={imagem.url} alt="Imagem gerada" /></div>
+      <div className="secundario"><img src={imagem.url} alt="imagem da história"></img></div>
       
     </div>
   );
