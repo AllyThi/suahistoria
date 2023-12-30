@@ -80,9 +80,9 @@ const criarHist = () => {
       <div className="secundario"><input value={pergunta.elementos} type="text" placeholder=" Digite os elementos da História" onChange={(e) => setPergunta({...pergunta, elementos:e.target.value}) } ></input></div>
       <div className="secundario"><button onClick={criarHist} >Gerar História</button></div>
       <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
-      <div className="secundario"><button onClick={() => gerarImagem()} >Gerar imagem da história</button></div>
+      <div className="secundario"><button onClick={() => gerarImagem(response)} >Gerar imagem da história</button></div>
       <div className="secundario"><textarea value={response} readOnly></textarea></div>
-      <img src={imagem} alt="imagem gerada" />
+      <div className="secundario"><img src={imagem} alt="imagem gerada" /></div> 
       
       
     </div>
