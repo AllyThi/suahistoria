@@ -45,7 +45,7 @@ function Body() {
 
     client.post("https://api.openai.com/v1/images/generations", imagemParams)
       .then((result) => {
-        setImagem(result.data[0]); // Armazenar a imagem na variável de estado
+        setImagem(result.data[0].url); // Armazenar a imagem na variável de estado
       })
       .catch((err) => console.log(err));
   };
@@ -82,7 +82,8 @@ const criarHist = () => {
       <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
       <div className="secundario"><button onClick={() => gerarImagem()} >Gerar imagem da história</button></div>
       <div className="secundario"><textarea value={response} readOnly></textarea></div>
-      <div className="secundario"><img src={imagem.url} alt="imagem da história"></img></div>
+      <img src={imagem} alt="imagem gerada" />
+      
       
     </div>
   );
