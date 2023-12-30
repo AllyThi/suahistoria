@@ -45,16 +45,11 @@ function Body() {
     };
 
     client.post("https://api.openai.com/v1/images/generations", imagemParams)
-    .then((result) => {
-      const imagemGerada = result.data[0];
-      if (imagemGerada && imagemGerada.data) {
-        setImagem(imagemGerada.data); // Supondo que 'data' contenha os dados da imagem
-      } else {
-        console.error("A resposta da API não contém os dados da imagem.", result.data);
-      }
-    })
-    .catch((err) => console.error(err));
-};
+      .then((result) => {
+        setImagem(result.data[0]); // Armazenar a imagem na variável de estado
+      })
+      .catch((err) => console.log(err));
+  };
 
 const criarHist = () => {
   const params = {
@@ -88,7 +83,7 @@ const criarHist = () => {
       <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
       <div className="secundario"><button onClick={() => gerarImagem()} >Gerar imagem da história</button></div>
       <div className="secundario"><textarea value={response} readOnly></textarea></div>
-      <div className="secundario"> <img src={`data:image/png;base64,${imagem}`} alt="Imagem gerada" /></div> 
+      <div className="secundario"><img src={imagem} alt="imagem gerada" /></div> 
       
       
     </div>
