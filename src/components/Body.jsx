@@ -35,10 +35,11 @@ function Body() {
   const client =axios.create({headers: {Authorization: `Bearer ${apiKey}` }})
 
 
-  const gerarImagem = (texto) => {
+  const gerarImagem = () => {
     const imagemParams = {
       model: "dall-e-3",
-      prompt: texto,
+      prompt:  `Crie uma imagem que represente uma história  infantil,  com seguintes caracteristicas,:Personagens principais: ${pergunta.principais},personagens secundários:  ${pergunta.secundarios}
+      , vilões:  ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos}, divida as frases com um ponto simples como . `,
       n: 1,
       size: "1024x1024",
     };
@@ -80,7 +81,7 @@ const criarHist = () => {
       <div className="secundario"><input value={pergunta.elementos} type="text" placeholder=" Digite os elementos da História" onChange={(e) => setPergunta({...pergunta, elementos:e.target.value}) } ></input></div>
       <div className="secundario"><button onClick={criarHist} >Gerar História</button></div>
       <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
-      <div className="secundario"><button onClick={() => gerarImagem(response)} >Gerar imagem da história</button></div>
+      <div className="secundario"><button onClick={() => gerarImagem()} >Gerar imagem da história</button></div>
       <div className="secundario"><textarea value={response} readOnly></textarea></div>
       <div className="secundario"><img src={imagem} alt="imagem gerada" /></div> 
       
