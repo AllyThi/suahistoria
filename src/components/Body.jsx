@@ -41,6 +41,7 @@ function Body() {
       prompt:  `Crie uma imagem que represente uma história  infantil,  com seguintes caracteristicas,:Personagens principais: ${pergunta.principais},personagens secundários:  ${pergunta.secundarios}
       , vilões:  ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos}, divida as frases com um ponto simples como . `,
       n: 1,
+      response_format: "url",
       size: "1024x1024",
     };
 
