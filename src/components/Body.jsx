@@ -6,7 +6,7 @@ import axios from "axios";
 
 function Body() {
   const [response, setResponse] = useState("");
-  const [imagem, setImagem] = useState({ url: ""});
+  const [imagem, setImagem] = useState("");
   const [pergunta, setPergunta] =useState({
     principais: "",
     secundarios: "",
@@ -36,21 +36,18 @@ function Body() {
 
 
   const gerarImagem = () => {
-    const imagemParams = {
-      model: "dall-e-3",
-      prompt:  `Crie uma imagem que represente uma história  infantil,  com seguintes caracteristicas,Personagens principais: ${pergunta.principais},personagens secundários:  ${pergunta.secundarios}
-      , vilões:  ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos}, divida as frases com um ponto simples como . `,
-      n: 1,
-      size: "1024x1024",
-    };
+    
+      const imagemParams = {
+      prompt: `um macaco`,
+      };
 
-    client.post("https://api.openai.com/v1/images/generations", imagemParams)
-    .then((result) => {
-      const imagemGerada = result.data[0];
-      setImagem(imagemGerada)
+      client.post("https://api.openai.com/v1/images/generations", imagemParams)
+      .then((resposta) => {
+        setImagem(resposta.data[0].url)  ;
+      
       console.log(imagem)
 
-     })
+       })
     .catch((err) => console.error(err));
 };
 
