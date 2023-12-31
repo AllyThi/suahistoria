@@ -58,7 +58,7 @@ function Body() {
       .then((resposta) => {
         setImagem(resposta.data[0])  ;
       
-      console.log(imagem[0])
+      console.log(imagem)
 
        })
     .catch((err) => console.error(err));
