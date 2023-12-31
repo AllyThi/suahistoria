@@ -6,7 +6,17 @@ import axios from "axios";
 
 function Body() {
   const [response, setResponse] = useState("");
-  const [imagem, setImagem] = useState("");
+  const [imagem, setImagem] = useState({
+    "created":"" ,
+    "data": [
+      {
+        "url": ""
+      },
+      {
+        "url": ""
+      }
+    ]
+  });
   const [pergunta, setPergunta] =useState({
     principais: "",
     secundarios: "",
@@ -43,9 +53,9 @@ function Body() {
 
       client.post("https://api.openai.com/v1/images/generations", imagemParams)
       .then((resposta) => {
-        setImagem(resposta.data[0].url)  ;
+        setImagem[0](resposta.data[0])  ;
       
-      console.log(imagem)
+      console.log(imagem[0])
 
        })
     .catch((err) => console.error(err));
@@ -83,7 +93,7 @@ const criarHist = () => {
       <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
       <div className="secundario"><button onClick={() => gerarImagem()} >Gerar imagem da história</button></div>
       <div className="secundario"><textarea value={response} readOnly></textarea></div>
-      <div className="secundario"><img src={imagem} alt="imagem gerada" /></div> 
+      <div className="secundario"><img src={imagem[0].url} alt="imagem gerada" /></div> 
       
       
     </div>
