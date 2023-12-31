@@ -6,7 +6,7 @@ import axios from "axios";
 
 function Body() {
   const [response, setResponse] = useState("");
-  const [imagem, setImagem] = useState(null);
+  const [imagem, setImagem] = useState({ url: ""});
   const [pergunta, setPergunta] =useState({
     principais: "",
     secundarios: "",
@@ -38,22 +38,19 @@ function Body() {
   const gerarImagem = () => {
     const imagemParams = {
       model: "dall-e-3",
-      prompt:  `Crie uma imagem que represente uma história  infantil,  com seguintes caracteristicas,:Personagens principais: ${pergunta.principais},personagens secundários:  ${pergunta.secundarios}
+      prompt:  `Crie uma imagem que represente uma história  infantil,  com seguintes caracteristicas,Personagens principais: ${pergunta.principais},personagens secundários:  ${pergunta.secundarios}
       , vilões:  ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos}, divida as frases com um ponto simples como . `,
       n: 1,
-      response_format: "url",
       size: "1024x1024",
     };
 
     client.post("https://api.openai.com/v1/images/generations", imagemParams)
     .then((result) => {
       const imagemGerada = result.data[0];
-      if (imagemGerada && imagemGerada.url) {
-        setImagem(imagemGerada);
-      } else {
-        console.error("A resposta da API não contém a propriedade 'url'.", result.data);
-      }
-    })
+      setImagem(imagemGerada)
+      console.log(imagem)
+
+     })
     .catch((err) => console.error(err));
 };
 
