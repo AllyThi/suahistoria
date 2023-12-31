@@ -46,7 +46,7 @@ h1{
 
 textarea {
   width: 100%;
-  height: fit-content;
+  height: max-content;
   resize: none;
   background-color: rgba(217, 233, 247, 0.616);
   border: none;
@@ -54,7 +54,9 @@ textarea {
 }
 img{
   max-width: 50%;
+  max-height: 50%;
   background-color: aliceblue;
+  overflow: visible;
 }
  
   
