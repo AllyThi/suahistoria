@@ -39,7 +39,8 @@ function Body() {
   const gerarImagem = () => {
     const imagemParams = {
       model: "dall-e-3",
-      prompt:"conto de fadas",
+      prompt:`gere uma imagem que tenha como elementos  Personagens principais: ${pergunta.principais}, personagens secundários:
+       ${pergunta.secundarios}, vilões: ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos: ${pergunta.elementos} `,
       n: 1,
       size: "1024x1024",
     };
@@ -57,8 +58,9 @@ function Body() {
     const params = {
       model: "gpt-4",
       messages: [
-        { role: "system", content: "Você é um assistente virtual que ajuda a criar histórias." },
-        { role: "user", content: `Crie uma história completa infantil, com as seguintes características em português: Personagens principais: ${pergunta.principais}, personagens secundários: ${pergunta.secundarios}, vilões: ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos: ${pergunta.elementos}. Divida as frases com um ponto simples como .` },
+        { role: "system", content: "Você é um especialista em  criar histórias para crianças" },
+        { role: "user", content: `Crie uma história completa infantil, com as seguintes características em português: Personagens principais: 
+        ${pergunta.principais}, personagens secundários: ${pergunta.secundarios}, vilões: ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos: ${pergunta.elementos}. Divida as frases com um ponto simples como .` },
       ],
       max_tokens: 1500,
       temperature: 1,
