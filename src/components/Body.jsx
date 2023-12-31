@@ -36,16 +36,20 @@ function Body() {
  
   const client =axios.create({headers: {Authorization: `Bearer ${apiKey}` }})
 
-const gerarImagem = () => {
-  const params = {
-    prompt: "um conto de fadas"
-  }
-  console.log(params.prompt)
+  const gerarImagem = () => {
+    const imagemParams = {
+      model: "dall-e-3",
+      prompt:"conto de fadas",
+      n: 1,
+      size: "1024x1024",
+    };
 
-  client.post("https://api.openai.com/v1/images/generations", params).then((resposta) => setImagem(resposta)).catch((err) => console.log(err))
-
-    console.log(imagem)
-}
+    client.post("https://api.openai.com/v1/images/generations", imagemParams)
+      .then((result) => {
+        console.log(result)
+      })
+      .catch((err) => console.log(err));
+  };
   
 
 const criarHist = () => {
