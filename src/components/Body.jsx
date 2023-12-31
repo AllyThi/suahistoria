@@ -13,7 +13,7 @@ function Body() {
     generos: "",
     elementos:"",
   });
-  const [imagem, setImagem] = useState(any)
+  const [imagem, setImagem] = useState({})
   
 
 
