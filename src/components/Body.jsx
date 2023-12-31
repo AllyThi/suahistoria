@@ -13,7 +13,7 @@ function Body() {
     generos: "",
     elementos:"",
   });
-  const [imagem, setImagem] = useState({})
+  const [imagem, setImagem] = useState("")
   
 
 
@@ -47,25 +47,29 @@ function Body() {
     client.post("https://api.openai.com/v1/images/generations", imagemParams)
       .then((result) => {
         console.log(result)
-        setImagem(result)
+        setImagem(result.data.data[0].url)
       })
       .catch((err) => console.log(err));
   };
   
 
-const criarHist = () => {
-  const params = {
-    model: "gpt-4-0613",
-    prompt: `Crie uma história completa infantil,  com seguintes caracteristicas, em português:Personagens principais: ${pergunta.principais},personagens secundários:  ${pergunta.secundarios}
-    , vilões:  ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos ${pergunta.elementos}, divida as frases com um ponto simples como . `, 
-    max_tokens: 1500,
-    temperature: 1,
-    }
-    console.log(params.prompt)
-    client.post("https://api.openai.com/v1/completions", params)
-    .then((result)=> setResponse(result.data.choices[0].text))
-    .catch((err)=> console.log(err))
-  } 
+  const criarHist = () => {
+    const params = {
+      model: "gpt-4",
+      messages: [
+        { role: "system", content: "Você é um assistente virtual que ajuda a criar histórias." },
+        { role: "user", content: `Crie uma história completa infantil, com as seguintes características em português: Personagens principais: ${pergunta.principais}, personagens secundários: ${pergunta.secundarios}, vilões: ${pergunta.viloes}, gênero: ${pergunta.generos}, e os elementos: ${pergunta.elementos}. Divida as frases com um ponto simples como .` },
+      ],
+      max_tokens: 1500,
+      temperature: 1,
+    };
+  
+    console.log(params.messages[1].content);
+  
+    client.post("https://api.openai.com/v1/chat/completions", params)
+      .then((result) => setResponse(result.data.choices[0].message.content))
+      .catch((err) => console.log(err));
+  };
   
   
   return (
@@ -85,6 +89,7 @@ const criarHist = () => {
       <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
       <div className="secundario"><button onClick={() => gerarImagem()} >Gerar imagem da história</button></div>
       <div className="secundario"><textarea value={response} readOnly></textarea></div>
+      <div className="secundario"><img src={imagem} alt="imagem gerada" /></div>
       
       
     </div>
