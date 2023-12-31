@@ -13,6 +13,7 @@ function Body() {
     generos: "",
     elementos:"",
   });
+  const [imagem, setImagem] = useState(any)
   
 
 
@@ -39,10 +40,11 @@ const gerarImagem = () => {
   const params = {
     prompt: "um conto de fadas"
   }
+  console.log(params.prompt)
 
-  client.post("https://api.openai.com/v1/images/generations", params)
-  .then((response)=> console.log(response))
-    .catch((err)=> console.log(err))
+  client.post("https://api.openai.com/v1/images/generations", params).then((resposta) => setImagem(resposta)).catch((err) => console.log(err))
+
+    console.log(imagem)
 }
   
 
