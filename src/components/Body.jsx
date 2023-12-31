@@ -56,7 +56,7 @@ function Body() {
 
       client.post("https://api.openai.com/v1/images/generations", imagemParams)
       .then((resposta) => {
-        setImagem(resposta.data[0])  ;
+        console.log(resposta.data[0])  ;
       
       console.log(imagem)
 
