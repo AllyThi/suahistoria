@@ -17,6 +17,7 @@ function Body() {
       }
     ]
   });
+  const [imagemVisual, setImagemVisual] = useState(imagem.data[0].url)
   const [pergunta, setPergunta] =useState({
     principais: "",
     secundarios: "",
@@ -24,6 +25,8 @@ function Body() {
     generos: "",
     elementos:"",
   });
+  console.log(imagem.data[0].url)
+
 
   console.log(pergunta)
 
@@ -53,7 +56,7 @@ function Body() {
 
       client.post("https://api.openai.com/v1/images/generations", imagemParams)
       .then((resposta) => {
-        setImagem[0](resposta.data[0])  ;
+        setImagem(resposta.data[0])  ;
       
       console.log(imagem[0])
 
@@ -93,8 +96,7 @@ const criarHist = () => {
       <div className="secundario"><button onClick={() => ler(response)} >ler</button></div>
       <div className="secundario"><button onClick={() => gerarImagem()} >Gerar imagem da história</button></div>
       <div className="secundario"><textarea value={response} readOnly></textarea></div>
-      <div className="secundario"><img src={imagem[0].url} alt="imagem gerada" /></div> 
-      
+      <div className="secundario"><img src={imagemVisual} alt="imagem gerada" /></div>
       
     </div>
   );
