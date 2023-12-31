@@ -47,6 +47,7 @@ function Body() {
     client.post("https://api.openai.com/v1/images/generations", imagemParams)
       .then((result) => {
         console.log(result)
+        setImagem(result)
       })
       .catch((err) => console.log(err));
   };
@@ -61,7 +62,7 @@ const criarHist = () => {
     temperature: 1,
     }
     console.log(params.prompt)
-    client.post("https://api.openai.com/v1/chat/completions", params)
+    client.post("https://api.openai.com/v1/completions", params)
     .then((result)=> setResponse(result.data.choices[0].text))
     .catch((err)=> console.log(err))
   } 
