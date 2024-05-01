@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 @font-face {
   font-family:'ButterflyKids-Regular' ;
@@ -51,3 +52,69 @@
 img{
   max-width: 100%;
 }
+=======
+html{
+  height: 100vh;
+  
+}
+.container{
+ 
+  display:flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content:center;
+  background-image: url("./components/contabackground.jpg");
+  background-size:cover;
+  align-items: center;
+  
+  
+}
+
+.secundario{
+flex-direction: row;
+justify-content: center;
+text-align: center;
+width: 90%;
+margin: 5px;
+  
+}
+input{
+  margin:0% 0% 0% 0% ;
+  font-family: cursive;
+  width: 100%;
+  border: none;
+  background-color:rgba(217, 233, 247, 0.616);
+  border-radius: 10px;
+  text-align: center;
+}
+
+p{
+  margin:0% 0% 0% 0% ;
+  font-family: cursive;
+  color: rgba(0, 0, 0, 0.801);
+}
+h1{
+  margin:0% 0% 0% 0% ;
+  font-family: cursive;
+  color: rgba(0, 0, 0, 0.801);
+}
+
+textarea {
+  width: 100%;
+  height: max-content;
+  resize: none;
+  background-color: rgba(217, 233, 247, 0.616);
+  border: none;
+  border-radius: 10px;
+}
+img{
+  width: 100%;
+  height: 100%;
+  background-color: aliceblue;
+  overflow: visible;
+}
+ 
+  
+
+
+>>>>>>> 789de3d3e0421119e98a0e28199934fee417f4a6
