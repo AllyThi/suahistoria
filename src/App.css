@@ -1,48 +1,53 @@
-.container {
-  display: flexbox;
-  align-items: center;
-  text-align: center;
-  font-family: cursive;
-  background-image: url("./components/contabackground.jpg");
-  background-size: contain;
-  max-width: 1080px;
-  min-width: 240px;
-} 
 
-button {
-font-family: cursive;
-font-weight: 300;
-color: rgb(156, 106, 60);
-margin-top: 10px;
-margin-bottom: 10px;
-border-radius:2dvi ;
-border-color: gray;
-  border-style:none;
-  background-color: rgb(253, 199, 146);
-  cursor: pointer;
+@font-face {
+  font-family:'ButterflyKids-Regular' ;
+  src: url('../public/ButterflyKids-Regular.ttf');
 }
 
-textarea {
-  width: 80%;
-  resize: unset;
-  min-height: 400px;
-  padding-left: 25px;
-  padding-top: 30px;
-  background-color: rgba(255,255,255,0.7);
-  font-family: Arial, Helvetica, sans-serif;
-}
+*{
+  font-family:'ButterflyKids-Regular' ;
+  
+  
+  }
+  #principal{
+     background-image:linear-gradient(to bottom,#86a8e7, #a6c0f7 );
+     height:100vh;
+  }
 
-input {
-  text-align: center;
-  font-style: italic;
-  width: 80%;
-  background-color: rgba(158, 158, 158, 0.4);
-  border-radius:2dvi ;
-  border-color: gray;
-  border-style:none;
-}
+  header {
+    display: grid;
+    text-align: center;
+    
+  }
+  header h1{
+    font-weight:600;
+    color: #0d6efd;
+    margin-top:30px;
+  }
 
-h1 {
-  padding-top: 45px;
-  font-size:x-large;
+  #botoes {
+    margin: 20px;
+    text-align: center;
+  }
+
+  .inputform {
+    text-align: center;
+
+  }
+
+  .inputform p {
+    margin: 20px;
+    font-size: 20px;
+    color: #0d6efd;
+  }
+  input{
+    opacity: 0.7
+    
+  }
+
+::placeholder {
+  color: black;
+}
+img{
+  max-width: 100%;
 }
